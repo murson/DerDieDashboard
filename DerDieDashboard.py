@@ -8,10 +8,10 @@ st.set_page_config(
     page_icon="👋",
 )
 
-words_melted = '/Users/michaelurson/Desktop/german_purity_thing/final_project/wf_melt.pkl'
-ending_summary = '/Users/michaelurson/Desktop/german_purity_thing/end_summary.pkl'
-key_endings = '/Users/michaelurson/Desktop/german_purity_thing/key_endings.pkl'
-key_stats = '/Users/michaelurson/Desktop/german_purity_thing/key_stats.pkl'
+words_melted = '/data/wf_melt.pkl'
+ending_summary = '/data/end_summary.pkl'
+key_endings = '/data/key_endings.pkl'
+key_stats = '/data/key_stats.pkl'
 
 st.sidebar.header("DerDieDasboard")
 
