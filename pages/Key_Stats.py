@@ -8,7 +8,7 @@ st.set_page_config(
 )
 
 st.title('Key Stats')
-st.subheader('Useful statistics about each gender')
+st.subheader('Accuracy and Coverage per Gender')
 
 st.sidebar.header("Key Stats")
 st.sidebar.subheader("Some Accuracy and Coverage statistics for each gender")
@@ -27,8 +27,7 @@ def plot_stats(key_stats):
        color_discrete_map={'n': 'green',
                                     'f': 'red',
                                     'm': 'blue',
-                                    'total':'grey'},
-       title = 'Accuracy and Coverage of Endings by Gender')
+                                    'total':'grey'})
 
     # This fixes the text values to percentage format.
     pl.update_traces(textposition="outside",
