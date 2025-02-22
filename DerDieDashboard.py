@@ -15,7 +15,7 @@ key_stats = 'data/key_stats.pkl'
 
 st.sidebar.header("DerDieDasboard")
 
-st.sidebar.subheader("The handy German companion you didn't know you needed")
+st.sidebar.subheader("The German gender demystifier you didn't know you needed, dork.")
 st.sidebar.text('Click on a barplot to explore the words and exceptions associated with each ending.')
 st.sidebar.text('The little number above each plot indicates the purity of that ending (i.e. % of words belonging to that ending\'s majority gender.')
 
