@@ -15,6 +15,11 @@ key_stats = 'data/key_stats.pkl'
 
 st.sidebar.header("DerDieDasboard")
 
+st.sidebar.subheader("The handy German companion you didn't know you needed")
+st.sidebar.text('Click on a barplot to explore the words and exceptions associated with each ending.')
+st.sidebar.text('The little number above each plot indicates the purity of that ending (i.e. % of words belonging to that ending\'s majority gender.')
+
+
 @st.cache_data #This prevents it from rerunning unless changes take place.
 def read_files(file):
     df = pd.read_pickle(file)
@@ -164,11 +169,11 @@ else:
 # Create tables for each gender.
 col3, col4, col5 = st.columns(3)
 with col3:
-    st.write(f":blue[Masculine: {st.session_state.count_dict['m']:,} ({st.session_state.count_dict['m_perc']:.0%})]")
-    st.dataframe(pivot_table('m',st.session_state.my_table_filter), hide_index=True, height = 200, width = 200)
-with col4:
     st.write(f":red[Feminine: {st.session_state.count_dict['f']:,} ({st.session_state.count_dict['f_perc']:.0%})]")
     st.dataframe(pivot_table('f',st.session_state.my_table_filter), hide_index=True, height = 200, width = 200)
+with col4:
+    st.write(f":blue[Masculine: {st.session_state.count_dict['m']:,} ({st.session_state.count_dict['m_perc']:.0%})]")
+    st.dataframe(pivot_table('m',st.session_state.my_table_filter), hide_index=True, height = 200, width = 200)
 with col5:
     st.write(f":green[Neutral: {st.session_state.count_dict['n']:,} ({st.session_state.count_dict['n_perc']:.0%})]")
     st.dataframe(pivot_table('n',st.session_state.my_table_filter), hide_index=True, height = 200, width = 200)
