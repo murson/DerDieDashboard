@@ -153,7 +153,7 @@ if 'count_dict' not in st.session_state:
     st.session_state.count_dict = {'m':0,'f':0,'n':0, 'total':0,'m_perc':0.0,'f_perc':0.0,'n_perc':0.0}
 
 # Title & subtitle.
-st.title('DerDieDashboard!')
+st.title('DerDieDashboard')
 st.subheader('A data visualization project by Michael Urson - Enjoy!')
 
 # Create graphs, one for endings, another for exceptions.
