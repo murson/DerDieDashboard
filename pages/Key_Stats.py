@@ -123,5 +123,7 @@ else:
     st.subheader(f'Selected: {st.session_state.stats['gender']}, with {st.session_state.stats['num_end']} endings, covering {st.session_state.stats['word_count']} words:')
 st.dataframe(filter_table(), hide_index=True)
 
+st.write(st.session_state.key_endings)
+
 # This is the last problem to resolve:
 # The issue is that this is out of sync. Instead of calculating values using the filter_table method, rather use the separate table used for graphing and just filter it for required values using dictionary.
