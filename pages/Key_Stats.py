@@ -44,6 +44,34 @@ def plot_stats(key_stats):
     
     return pl
 
+# This needs to be finished still.
+def plot_end_cov_acc(key_stats):
+    key_stats = key_stats.rename({'coverage':'Coverage (%) of all nouns', 
+                                  'accuracy':'Accuracy (%) of ending for gender'}, 
+                                  axis = 0)
+    pl = px.bar(key_stats.loc[['Accuracy (%) of ending for gender', 'Coverage (%) of all nouns']].round(2), 
+       barmode = 'group',
+       text = 'value',
+       color_discrete_map={'n': 'green',
+                                    'f': 'red',
+                                    'm': 'blue',
+                                    'total':'grey'})
+
+    # This fixes the text values to percentage format.
+    pl.update_traces(textposition="outside",
+                    texttemplate="%{y:.0%}")
+
+    # This fixes the y-axis tickmarks to percentage format.
+    pl.update_layout(yaxis_tickformat = '.0%',
+                    yaxis_range=[0,1],
+                    yaxis_title = None, xaxis_title = None, legend=dict(
+                    yanchor="top",
+                    y=1,
+                    xanchor="right",
+                    x=0.85),legend_title_text='Gender')
+    
+    return pl
+
 def set_display_text(gender, num_end, word_count):
     st.session_state.stats['gender'] = gender
     st.session_state.stats['num_end'] = num_end
