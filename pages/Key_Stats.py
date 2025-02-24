@@ -71,6 +71,9 @@ def plot_acc_cov(accov, gender):
                       margin_l = 0,
                       margin_r = 20)
     fig.layout.yaxis.tickformat = ',.0%'
+
+    fig.update_traces(textposition="inside",
+                    texttemplate="%{y:.0}")
     
     return fig
 
