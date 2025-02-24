@@ -44,33 +44,27 @@ def plot_stats(key_stats):
     
     return pl
 
-# This needs to be finished still.
-def plot_end_cov_acc(key_stats):
-    key_stats = key_stats.rename({'coverage':'Coverage (%) of all nouns', 
-                                  'accuracy':'Accuracy (%) of ending for gender'}, 
-                                  axis = 0)
-    pl = px.bar(key_stats.loc[['Accuracy (%) of ending for gender', 'Coverage (%) of all nouns']].round(2), 
-       barmode = 'group',
-       text = 'value',
-       color_discrete_map={'n': 'green',
-                                    'f': 'red',
-                                    'm': 'blue',
-                                    'total':'grey'})
+def plot_acc_cov(accov, gender):
+    if gender == 'total' or gender == '':
+        return px.bar()
+    # keep colouring consistent
+    apply_colour = {'f':'red', 'm':'blue','n':'green'}
+    colour_applied = apply_colour[gender]
 
-    # This fixes the text values to percentage format.
-    pl.update_traces(textposition="outside",
-                    texttemplate="%{y:.0%}")
+    df = st.session_state.key_endings[['ending', 'gender','accuracy','coverage']].query(f'[\'{gender}\'] in gender').sort_values(accov, ascending = False)
 
-    # This fixes the y-axis tickmarks to percentage format.
-    pl.update_layout(yaxis_tickformat = '.0%',
-                    yaxis_range=[0,1],
-                    yaxis_title = None, xaxis_title = None, legend=dict(
-                    yanchor="top",
-                    y=1,
-                    xanchor="right",
-                    x=0.85),legend_title_text='Gender')
+    fig = px.bar(df, 
+           x = 'ending', 
+           y = accov,
+           color = 'gender',
+           color_discrete_sequence = [colour_applied])
     
-    return pl
+    fig.update_layout(showlegend = False, 
+                      xaxis=dict(title=dict(text=str.title(accov+': '+gender))),
+                      yaxis=dict(title=dict(text=str.title(''))))
+    fig.layout.yaxis.tickformat = ',.0%'
+    
+    return fig
 
 def set_display_text(gender, num_end, word_count):
     st.session_state.stats['gender'] = gender
@@ -121,9 +115,12 @@ if st.session_state.stats['gender'] == '':
     st.subheader('Nothing selected, displaying total:')
 else:
     st.subheader(f'Selected: {st.session_state.stats['gender']}, with {st.session_state.stats['num_end']} endings, covering {st.session_state.stats['word_count']} words:')
-st.dataframe(filter_table(), hide_index=True)
 
-st.write(st.session_state.key_endings)
+col1, col2 = st.columns(2)
+with col1:
+    st.plotly_chart(plot_acc_cov('accuracy',st.session_state.stats['gender']))
+with col2:
+    st.plotly_chart(plot_acc_cov('coverage',st.session_state.stats['gender']))
 
 # This is the last problem to resolve:
 # The issue is that this is out of sync. Instead of calculating values using the filter_table method, rather use the separate table used for graphing and just filter it for required values using dictionary.
