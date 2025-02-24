@@ -7,8 +7,7 @@ st.set_page_config(
     page_icon="👋",
 )
 
-st.title('Key Stats')
-st.subheader('Accuracy and Coverage per Gender')
+st.subheader('Accuracy & Coverage by Gender')
 
 st.sidebar.header("Key Stats")
 st.sidebar.subheader("Some Accuracy and Coverage statistics for each gender")
@@ -27,10 +26,11 @@ def plot_stats(key_stats):
        color_discrete_map={'n': 'green',
                                     'f': 'red',
                                     'm': 'blue',
-                                    'total':'grey'})
+                                    'total':'indigo'},
+                                    height = 300)
 
     # This fixes the text values to percentage format.
-    pl.update_traces(textposition="outside",
+    pl.update_traces(textposition="inside",
                     texttemplate="%{y:.0%}")
 
     # This fixes the y-axis tickmarks to percentage format.
@@ -40,13 +40,18 @@ def plot_stats(key_stats):
                     yanchor="top",
                     y=1,
                     xanchor="right",
-                    x=0.85),legend_title_text='Gender')
+                    x=0.85),legend_title_text='Gender',
+                    margin_b = 50,
+                    margin_t = 20,
+                    xaxis = dict(tickfont = dict(size=14)))
     
     return pl
 
 def plot_acc_cov(accov, gender):
-    if gender == 'total' or gender == '':
-        return px.bar()
+    if gender == 'total':
+        return px.bar(title='Plot has been left intentionally blank, twice.')
+    if gender == '':
+        gender = 'f'
     # keep colouring consistent
     apply_colour = {'f':'red', 'm':'blue','n':'green'}
     colour_applied = apply_colour[gender]
@@ -57,11 +62,15 @@ def plot_acc_cov(accov, gender):
            x = 'ending', 
            y = accov,
            color = 'gender',
-           color_discrete_sequence = [colour_applied])
+           color_discrete_sequence = [colour_applied],
+           height = 300)
     
     fig.update_layout(showlegend = False, 
                       xaxis=dict(title=dict(text=str.title(accov+': '+gender))),
-                      yaxis=dict(title=dict(text=str.title(''))))
+                      yaxis=dict(title=dict(text=str.title(''))),
+                      margin_t = 10,
+                      margin_l = 0,
+                      margin_r = 20)
     fig.layout.yaxis.tickformat = ',.0%'
     
     return fig
@@ -71,6 +80,7 @@ def set_display_text(gender, num_end, word_count):
     st.session_state.stats['num_end'] = num_end
     st.session_state.stats['word_count'] = word_count
 
+# This is not used, but still nice to keep.
 def filter_table():
     try:
         if st.session_state.end_filter['gender'] == 'total':
@@ -109,18 +119,20 @@ if 'end_filter' not in st.session_state:
 if 'stats' not in st.session_state:
     st.session_state.stats = {'gender':'','num_end':0,'word_count':0}
 
+try:
+    st.plotly_chart(plot_stats(st.session_state.key_stats), key = 'end_selected', on_select=extract_ending)
+    #if st.session_state.stats['gender'] == '':
+    #    st.subheader('')
+    #else:
+        #st.write(f'Selected: {st.session_state.stats['gender']}, with {st.session_state.stats['num_end']} endings, covering {st.session_state.stats['word_count']} words:')
 
-st.plotly_chart(plot_stats(st.session_state.key_stats), key = 'end_selected', on_select=extract_ending)
-if st.session_state.stats['gender'] == '':
-    st.subheader('Nothing selected, displaying total:')
-else:
-    st.subheader(f'Selected: {st.session_state.stats['gender']}, with {st.session_state.stats['num_end']} endings, covering {st.session_state.stats['word_count']} words:')
-
-col1, col2 = st.columns(2)
-with col1:
-    st.plotly_chart(plot_acc_cov('accuracy',st.session_state.stats['gender']))
-with col2:
-    st.plotly_chart(plot_acc_cov('coverage',st.session_state.stats['gender']))
+    col1, col2 = st.columns(2)
+    with col1:
+        st.plotly_chart(plot_acc_cov('accuracy',st.session_state.stats['gender']), key = 'acc_plot')
+    with col2:
+        st.plotly_chart(plot_acc_cov('coverage',st.session_state.stats['gender']), key = 'cov_plot')
+except AttributeError:
+    st.subheader('Dashboard initialization error - please navigate to the \'DerDieDashboard\' page, and then back here, and the error will magically disappear 🧙')
 
 # This is the last problem to resolve:
 # The issue is that this is out of sync. Instead of calculating values using the filter_table method, rather use the separate table used for graphing and just filter it for required values using dictionary.
