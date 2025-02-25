@@ -10,7 +10,7 @@ st.set_page_config(
 st.subheader('Accuracy & Coverage by Gender')
 
 st.sidebar.header("Key Stats")
-st.sidebar.text('Clicking on a barplot will display accuracy & coverage of each ending for the selected gender.')
+st.sidebar.text('Clicking on one of the barplots above will display accuracy & coverage of each ending for the selected gender.')
 st.sidebar.text('By learning ~30 endings (and 17 exceptions), you can pretty much learn the genders of more than half of all ~75k German nouns, and get them right 90% of the time!')
 st.sidebar.text('Also, by learning only 8 endings (plus a couple of exceptions), you will cover 83% of all Female German nouns at over 90% accuracy. Wie zoll ist das?')
 st.sidebar.text('For all the auditors out there, the total on this page doesn\'t agree to the DerDieDashboard because of the exclusion of exceptions. \nHave a medal 🥇')
