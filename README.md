@@ -1,6 +1,8 @@
 # DerDieDashboard
 A dashboard exploring the link between the endings of German nouns and their genders.
 
+Here's the [link to the DerDieDashboard on Streamlit.]('https://derdiedashboard.streamlit.app')
+
 ## Why...
 
 Learning German is hard, and this is largely due to the fact that every noun has a 'gender', which has a massive impact on sentence meaning. This is largely due to German's case system, wherein articles and adjectives morph according to the case (subject, direct, direct object, or possessive) of the noun being referred to. To better understand this, [here's a brilliant guide](https://germanwithlaura.com/noun-cases/).
