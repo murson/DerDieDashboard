@@ -1,7 +1,7 @@
 # DerDieDashboard
 A dashboard exploring the link between the endings of German nouns and their genders.
 
-Here's the [link to the DerDieDashboard on Streamlit.]('https://derdiedashboard.streamlit.app')
+Here's the [link to the DerDieDashboard on Streamlit.](https://derdiedashboard.streamlit.app)
 
 ## Why...
 
