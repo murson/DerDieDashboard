@@ -20,7 +20,7 @@ st.sidebar.text('The little number above each plot indicates the accuracy of tha
 st.sidebar.text('The tables below the plots present lists of words belonging to each gender.')
 leipzig_url = 'https://wortschatz.uni-leipzig.de/en/download/German#deu_news_2024'
 
-st.sidebar.text("\'usage\' is an indication of how common a word is, and was derived from several of [Leipzig Universitys corpora]")#% leipzig_url)
+st.sidebar.text("\'usage\' is an indication of how common a word is, and was derived from several of [Leipzig University\'s corpora]")#% leipzig_url)
 
 
 @st.cache_data #This prevents it from rerunning unless changes take place.
@@ -154,7 +154,7 @@ if 'count_dict' not in st.session_state:
 
 # Title & subtitle.
 st.title('DerDieDashboard')
-st.subheader('A data visualization project by Michael Urson - Enjoy!')
+st.write('A data visualization project by Michael Urson - Enjoy!')
 
 # Create graphs, one for endings, another for exceptions.
 col1, col2 = st.columns(2)
