@@ -157,7 +157,7 @@ st.title('DerDieDashboard')
 st.write('A data visualization project by Michael Urson - Enjoy!')
 
 # Create graphs, one for endings, another for exceptions.
-col1, col2 = st.columns([0.80, 0.20])
+col1, col2 = st.columns([0.75, 0.25])
 with col1:
     st.plotly_chart(melted_plot(list(st.session_state.end_except_dict.keys()), f'Endings: ',1), key = 'my_end_sel',on_select = extract_selected)
 with col2:
