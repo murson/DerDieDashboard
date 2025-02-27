@@ -141,7 +141,7 @@ if "key_endings" not in st.session_state:
     st.session_state.key_endings = read_files(key_endings)
 
 if 'end_except_dict' not in st.session_state:
-    st.session_state.end_except_dict = {"e":["yte","bote","see"],  "ng":["ang","ing"], "iel":[],  "in":["ein"],  "er":["tier","pier"], "mus":[],"haus":[],  "it":[],  "ft":["äft"], "hen":[],   "f":["hiff"],  "um":["aum"],  "rm":["orm"],  "em":[],  "ik":[], "uch":["buch","tuch"],  "tz":["etz"],  "ei":["hrei","brei"], "all":[], "eis":[], "ald":['held','wald']}
+    st.session_state.end_except_dict = {"e":["yte","bote","see"],"ng":["ang","ing"],"iel":[],"in":["ein"],"er":["tier","pier"],"mus":[],"haus":[],"it":[],"ft":["äft"],"hen":[],"f":["hiff"],"um":["aum"],"rm":["orm"],"em":[],"ik":[],"uch":["buch","tuch"],"tz":["etz"],"ei":["hrei","brei"],"all":[],"eis":[],"ld":['ald','uld']}
 
 if 'my_table_filter' not in st.session_state:
     st.session_state.my_table_filter = ''    
