@@ -19,7 +19,7 @@ st.sidebar.text('Click on a barplot to explore the words and exceptions associat
 st.sidebar.text('The little number above each plot indicates the accuracy of that ending (i.e. % of words belonging to that ending\'s majority gender.)')
 st.sidebar.text('The tables below the plots present lists of words belonging to each gender')
 leipzig_url = 'https://wortschatz.uni-leipzig.de/en/download/German#deu_news_2024'
-st.sidebar.text('|usage| is an indication of how common a word is, and was derived from several of [Leipzig University\'s corpora](%s)'% leipzig_url)
+st.sidebar.text('|usage| is an indication of how common a word is, and was derived from several of [Leipzig University\'s corpora](https://wortschatz.uni-leipzig.de/en/download/German#deu_news_2024))')
 
 
 @st.cache_data #This prevents it from rerunning unless changes take place.
