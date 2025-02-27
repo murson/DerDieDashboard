@@ -10,7 +10,7 @@ st.set_page_config(
 
 words_melted = 'data/wf_melt.pkl'
 ending_summary = 'data/end_summary.pkl'
-key_endings = 'data/key_endings.pkl'
+key_endings = 'data/key_endings_v2.pkl'
 key_stats = 'data/key_stats.pkl'
 
 st.sidebar.subheader("The German gender demystifier you didn't know you needed")
