@@ -160,9 +160,9 @@ st.write('A data visualization project by Michael Urson - Enjoy!')
 # Create graphs, one for endings, another for exceptions.
 col1, col2 = st.columns(2)
 with col1:
-    st.plotly_chart(melted_plot(list(st.session_state.end_except_dict.keys()), f'Endings: ',1, 300), key = 'my_end_sel',on_select = extract_selected, width = 200)
+    st.plotly_chart(melted_plot(list(st.session_state.end_except_dict.keys()), f'Endings: ',1, 300), key = 'my_end_sel',on_select = extract_selected)
 with col2:
-    st.plotly_chart(melted_plot(st.session_state.my_selected_exceptions,'Exceptions: ',0,100), key = 'my_except_sel', on_select = extract_exceptions)
+    st.plotly_chart(melted_plot(st.session_state.my_selected_exceptions,'Exceptions: ',0,50), key = 'my_except_sel', on_select = extract_exceptions)
 
 # Display which item is selected and number of occurrences.
 if st.session_state.my_table_filter == '':
