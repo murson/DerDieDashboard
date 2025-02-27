@@ -156,6 +156,8 @@ if 'count_dict' not in st.session_state:
 st.title('DerDieDashboard')
 st.write('A data visualization project by Michael Urson - Enjoy!')
 
+st.write(st.session_state.wf_melt)
+
 # Create graphs, one for endings, another for exceptions.
 col1, col2 = st.columns(2)
 with col1:
