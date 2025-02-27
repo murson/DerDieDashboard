@@ -79,7 +79,7 @@ def extract_exceptions():
         st.session_state.my_table_filter = ''
         count_endings()
 
-def melted_plot(endings, heading, leg_vis, plot_width):
+def melted_plot(endings, heading, leg_vis):
     # Find endings in table that are in endings selected by user.
     quer = f'ending in {endings}'
             
@@ -100,8 +100,7 @@ def melted_plot(endings, heading, leg_vis, plot_width):
                 text = list(end_pivot['accuracy']),
                 color_discrete_map={'n': 'green',
                                     'f': ' red',
-                                    'm': 'blue'},
-                width = plot_width)
+                                    'm': 'blue'})
 
     # This fixes a stupid problem whereby accuracy labels are repeated. Therefore only showing labels for gender n.
     barchart.update_traces(textposition="outside", cliponaxis=False)
@@ -158,11 +157,11 @@ st.title('DerDieDashboard')
 st.write('A data visualization project by Michael Urson - Enjoy!')
 
 # Create graphs, one for endings, another for exceptions.
-col1, col2 = st.columns(2)
+col1, col2 = st.columns([0.7, 0.3])
 with col1:
-    st.plotly_chart(melted_plot(list(st.session_state.end_except_dict.keys()), f'Endings: ',1, 300), key = 'my_end_sel',on_select = extract_selected)
+    st.plotly_chart(melted_plot(list(st.session_state.end_except_dict.keys()), f'Endings: ',1), key = 'my_end_sel',on_select = extract_selected)
 with col2:
-    st.plotly_chart(melted_plot(st.session_state.my_selected_exceptions,'Exceptions: ',0,50), key = 'my_except_sel', on_select = extract_exceptions)
+    st.plotly_chart(melted_plot(st.session_state.my_selected_exceptions,'Exceptions: ',0), key = 'my_except_sel', on_select = extract_exceptions)
 
 # Display which item is selected and number of occurrences.
 if st.session_state.my_table_filter == '':
