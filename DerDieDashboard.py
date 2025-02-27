@@ -17,10 +17,10 @@ st.sidebar.subheader("The German gender demystifier you didn't know you needed")
 st.sidebar.text('Finally, a way to more precisely visualize the relationships between German noun endings, and their genders. With this tool, you can easily learn the genders of over 55% of all 75k German nouns, at 90% accuracy!')
 st.sidebar.text('Click on a barplot to explore the words and exceptions associated with each ending.')
 st.sidebar.text('The little number above each plot indicates the accuracy of that ending (i.e. % of words belonging to that ending\'s majority gender.)')
-st.sidebar.text('The tables below the plots present lists of words belonging to each gender')
+st.sidebar.text('The tables below the plots present lists of words belonging to each gender.')
 leipzig_url = 'https://wortschatz.uni-leipzig.de/en/download/German#deu_news_2024'
 
-st.sidebar.text("\'usage\' is an indication of how common a word is, and was derived from several of [Leipzig Universitys corpora](%s)" % leipzig_url)
+st.sidebar.text("\'usage\' is an indication of how common a word is, and was derived from several of [Leipzig Universitys corpora]")#% leipzig_url)
 
 
 @st.cache_data #This prevents it from rerunning unless changes take place.
