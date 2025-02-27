@@ -93,7 +93,7 @@ def melted_plot(endings, heading, leg_vis):
     end_pivot = end_pivot.sort_values('total', ascending = False)
     total_words = sum(end_pivot['total'])
 
-    barchart = px.bar(end_pivot.sort_values('total', ascending=False).drop('total', axis = 1).head(20),
+    barchart = px.bar(end_pivot.sort_values('total', ascending=False).drop('total', axis = 1).head(21),
                 x='ending', 
                 y=list(compress(['f','m','n'],[x in end_pivot.columns for x in ['f','m','n']])), # Prevents crash when < 3 genders
                 title=f'{heading} {total_words:,} words',
