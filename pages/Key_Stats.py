@@ -119,7 +119,6 @@ if 'stats' not in st.session_state:
     st.session_state.stats = {'gender':'','num_end':0,'word_count':0}
 
 try:
-    st.write(st.session_state.key_endings)
     st.plotly_chart(plot_stats(st.session_state.key_stats), key = 'end_selected', on_select=extract_ending)
     #if st.session_state.stats['gender'] == '':
     #    st.subheader('')
